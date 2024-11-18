@@ -1,0 +1,63 @@
+@use 'variables';
+
+.maim {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.hero {
+    background-image: url('../assets/images/hero_section.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    min-height: 524px;
+    .hero__section {
+        display: flex;
+        width: 500px;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 24.7vw;
+    }   .hero__section-header {
+        font-family: "Montserrat", sans-serif;
+        line-height: 150%;
+        text-transform: uppercase;
+        font-size: 32px;
+        margin: 10px 0 0 0;
+        text-align: center;
+        letter-spacing: 6px;
+        font-weight: 500;
+        color: variables.$primary-color;;
+    }   .hero__section-caption {
+        font-family: "Allura", cursive;
+        color: variables.$primary-color;
+        line-height: 100%;
+        letter-spacing: 1px;
+        font-size: 24px;
+    }   .btn {
+        background-color: variables.$second-color;
+        color:variables.$primary-color;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding: 20px 30px;
+        border: none;
+        letter-spacing: 1px;
+        border-radius: 20px;
+    }   .hero__section-btn {
+        margin: 15px 0 15px 0;
+    }
+}
+
+.about {
+    background-image: url('../assets/images/about_section.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    min-height: 648px;
+}

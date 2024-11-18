@@ -1,0 +1,58 @@
+@use 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: variables.$primary-color;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  .second {
+    flex-grow: 1;
+    margin-right: auto;
+  }
+  .third,
+  .fourth,
+  .fifth,
+  .sixth {
+    margin-right: 25px;
+  }
+  .first {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-left: 86px;
+  }
+}
+
+.element {
+  padding: 20px;
+  a {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 130%;
+    color: variables.$second-color;
+    font-weight: 500;
+  }
+}

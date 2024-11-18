@@ -31,7 +31,7 @@
         text-align: center;
         letter-spacing: 6px;
         font-weight: 500;
-        color: variables.$primary-color;;
+        color: variables.$primary-color;
     }   .hero__section-caption {
         font-family: "Allura", cursive;
         color: variables.$primary-color;
@@ -53,11 +53,54 @@
 }
 
 .about {
-    background-image: url('../assets/images/about_section.png');
+    background-image: url('/src/assets/images/about_section.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
     height: auto;
     min-height: 648px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .about-wrapper {
+        display: flex;
+        align-items: center;
+        max-width: 89%;
+        height: 528px;
+        margin: 0px auto 0 auto;
+        background-color: variables.$primary-color;
+        overflow: hidden;
+        border-radius: 20px;
+        .about__left-content {
+            width: 50%;
+            padding: 60px 60px 80px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            h5 {
+                font-family: "Allura", cursive;
+                color: variables.$third-color;
+                font-size: 24px;
+            }
+            h4 {
+                font-size: 24px;
+                text-transform: uppercase;
+                line-height: 152%;
+                letter-spacing: 4px;
+            }
+            p {
+                line-height: 148%;
+                width: 80%;
+            }
+        }
+        .about__right-content {
+            width: 50%;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
 }

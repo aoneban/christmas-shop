@@ -127,52 +127,112 @@
   .slider__start {
     margin-top: 57px;
     h5 {
-        font-family: 'Allura', cursive;
-        color: variables.$primary-color;
-        font-size: 24px;
-        text-align: center;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
+      font-family: 'Allura', cursive;
+      color: variables.$primary-color;
+      font-size: 24px;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
     h4 {
-        color: variables.$primary-color;
-        font-size: 24px;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        font-weight: 400;
-        margin-bottom: 25px;
+      color: variables.$primary-color;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 400;
+      margin-bottom: 25px;
     }
   }
-} .slider__middle {
+}
+.slider__middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  left: 370px;
+  gap: 25px;
+  p {
+    font-size: 80px;
+    text-transform: uppercase;
+    color: variables.$primary-color;
+    font-weight: 500;
+  }
+  img {
+    border-radius: 20px;
+  }
+}
+.slider__finish {
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 91%;
+  button {
+    margin-right: 20px;
+    background: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 20px;
+    border: 1px solid variables.$primary-color;
+  }
+  .arrow-left {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+}
+
+.gifts {
+  background-image: url('../assets/images/gifts_section.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: auto;
+  min-height: 554px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  .gifts__products {
+    width: 90%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    position: relative;
-    left: 370px;
-    gap: 25px;
-    p {
-        font-size: 80px;
-        text-transform: uppercase;
-        color: variables.$primary-color;
-        font-weight: 500;
+    &-wrapper {
+      background-color: rgb(225, 242, 237);
+      border-radius: 10px;
+      .gifts__products-name {
+        position: relative;
+        background-color: variables.$primary-color;
+        padding: 10px 15px 60px 15px;
+        border-radius: 10px;
+        h4 {
+          font-size: 16px;
+          text-transform: uppercase;
+          position: absolute;
+        }
+        p {
+          padding-top: 10px;
+          text-transform: uppercase;
+          font-size: 12px;
+        }
+      }
     }
-    img {
-        border-radius: 20px;
+  }
+  .gifts__title {
+    h5 {
+      font-family: 'Allura', cursive;
+      color: #ffffff;
+      font-size: 24px;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      margin-top: 57px;
     }
-}   .slider__finish {
-    margin: 20px 0 0 0;
-    display: flex;
-    justify-content: flex-end;
-    width: 91%;
-    button {
-        margin-right: 20px;
-        background: none;
-        width: 56px;
-        height: 56px;
-        border-radius: 20px;
-        border: 1px solid variables.$primary-color;;
+    h4 {
+      color: variables.$primary-color;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 400;
+      margin-bottom: 25px;
     }
-    .arrow-left {
-        border: 1px solid rgba(255, 255, 255, 0.4);
-    }
+  }
 }

@@ -1,6 +1,11 @@
 @use 'variables';
 @use 'mixins' as *;
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
   background-color: variables.$primary-color;
   font-family: "Montserrat", sans-serif;
@@ -79,7 +84,7 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     width: 89%;
-    margin: 56px 0;
+    margin: 58px 0;
     &-cart {
       background-color: #ECF3F8;
       width: 33%;

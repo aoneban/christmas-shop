@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins' as *;
 
 .maim {
   display: flex;
@@ -13,6 +14,8 @@
   width: 100%;
   height: auto;
   min-height: 524px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   .hero__section {
     display: flex;
     width: 500px;
@@ -21,35 +24,33 @@
     align-items: center;
     justify-content: center;
     min-height: 33.1vw;
+    &-header {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 150%;
+      text-transform: uppercase;
+      font-size: 32px;
+      margin: 10px 0 0 0;
+      text-align: center;
+      letter-spacing: 6px;
+      font-weight: 500;
+      color: variables.$primary-color;
+    }
+    &-caption {
+      @include caption;
+      color: variables.$primary-color;
+    }
+    .btn {
+      background-color: variables.$second-color;
+      color: variables.$primary-color;
+      text-transform: uppercase;
+      font-size: 12px;
+      padding: 20px 30px;
+      border: none;
+      letter-spacing: 1px;
+      border-radius: 20px;
+    }
   }
-  .hero__section-header {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 150%;
-    text-transform: uppercase;
-    font-size: 32px;
-    margin: 10px 0 0 0;
-    text-align: center;
-    letter-spacing: 6px;
-    font-weight: 500;
-    color: variables.$primary-color;
-  }
-  .hero__section-caption {
-    font-family: 'Allura', cursive;
-    color: variables.$primary-color;
-    line-height: 100%;
-    letter-spacing: 1px;
-    font-size: 24px;
-  }
-  .btn {
-    background-color: variables.$second-color;
-    color: variables.$primary-color;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 20px 30px;
-    border: none;
-    letter-spacing: 1px;
-    border-radius: 20px;
-  }
+
   .hero__section-btn {
     margin: 15px 0 15px 0;
   }
@@ -62,7 +63,7 @@
   background-position: center;
   width: 100%;
   height: auto;
-  min-height: 648px;
+  min-height: 639px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,10 +83,10 @@
       display: flex;
       flex-direction: column;
       gap: 25px;
+      margin-top: 21px;
       h5 {
-        font-family: 'Allura', cursive;
+        @include caption;
         color: variables.$third-color;
-        font-size: 24px;
       }
       h4 {
         font-size: 24px;
@@ -94,6 +95,8 @@
         letter-spacing: 4px;
       }
       p {
+        position: relative;
+        bottom: 10px;
         line-height: 148%;
         width: 80%;
       }
@@ -127,12 +130,10 @@
   .slider__start {
     margin-top: 57px;
     h5 {
-      font-family: 'Allura', cursive;
+      @include caption;
       color: variables.$primary-color;
-      font-size: 24px;
       text-align: center;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
+      margin-top: 6px;
     }
     h4 {
       color: variables.$primary-color;
@@ -140,42 +141,41 @@
       text-transform: uppercase;
       letter-spacing: 4px;
       font-weight: 400;
-      margin-bottom: 25px;
+      margin: 16px 0 25px 0;
     }
   }
-}
-.slider__middle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  left: 370px;
-  gap: 25px;
-  p {
-    font-size: 80px;
-    text-transform: uppercase;
-    color: variables.$primary-color;
-    font-weight: 500;
+  .slider__middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 88%;
+    gap: 21px;
+    p {
+      font-size: 80px;
+      text-transform: uppercase;
+      color: variables.$primary-color;
+      font-weight: 500;
+    }
+    img {
+      border-radius: 20px;
+    }
   }
-  img {
-    border-radius: 20px;
-  }
-}
-.slider__finish {
-  margin: 20px 0 0 0;
-  display: flex;
-  justify-content: flex-end;
-  width: 91%;
-  button {
-    margin-right: 20px;
-    background: none;
-    width: 56px;
-    height: 56px;
-    border-radius: 20px;
-    border: 1px solid variables.$primary-color;
-  }
-  .arrow-left {
-    border: 1px solid rgba(255, 255, 255, 0.4);
+  .slider__finish {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 91%;
+    button {
+      margin-right: 20px;
+      background: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      border: 1px solid variables.$primary-color;
+    }
+    .arrow-left {
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
   }
 }
 
@@ -192,39 +192,40 @@
   align-items: center;
   overflow: hidden;
   .gifts__products {
-    width: 90%;
+    width: 89%;
     display: flex;
     justify-content: space-between;
     &-wrapper {
-      background-color: rgb(225, 242, 237);
-      border-radius: 10px;
+      background-color: #ecf3f8;
+      border-radius: 20px;
       .gifts__products-name {
         position: relative;
         background-color: variables.$primary-color;
-        padding: 10px 15px 60px 15px;
-        border-radius: 10px;
+        padding: 10px 15px 70px 15px;
+        border-radius: 20px;
         h4 {
-          font-size: 16px;
-          text-transform: uppercase;
+          @include header_h3;
           position: absolute;
+          top: 39px;
+          left: 18px;
         }
         p {
+          @include header_h4;
           padding-top: 10px;
-          text-transform: uppercase;
-          font-size: 12px;
+          position: relative;
+          bottom: 5px;
+          left: 2px;
         }
       }
     }
   }
   .gifts__title {
     h5 {
-      font-family: 'Allura', cursive;
-      color: #ffffff;
-      font-size: 24px;
+      @include caption;
+      color: variables.$primary-color;
       text-align: center;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      margin-top: 57px;
+      margin-bottom: 16px;
+      margin-top: 63px;
     }
     h4 {
       color: variables.$primary-color;
@@ -250,17 +251,3 @@
   align-items: center;
   overflow: hidden;
 }
-
-.footer {
-    background-image: url('../assets/images/footer_section.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: auto;
-    min-height: 668px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-  }

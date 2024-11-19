@@ -40,14 +40,7 @@
       color: variables.$primary-color;
     }
     .btn {
-      background-color: variables.$second-color;
-      color: variables.$primary-color;
-      text-transform: uppercase;
-      font-size: 12px;
-      padding: 20px 30px;
-      border: none;
-      letter-spacing: 1px;
-      border-radius: 20px;
+      @include btn_base;
     }
   }
 
@@ -194,6 +187,8 @@
   .gifts__products {
     width: 89%;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     &-wrapper {
       background-color: #ecf3f8;
@@ -227,13 +222,10 @@
       margin-bottom: 16px;
       margin-top: 63px;
     }
-    h4 {
+    h2 {
+      @include header_h2;
       color: variables.$primary-color;
-      font-size: 24px;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-weight: 400;
-      margin-bottom: 25px;
+      margin-bottom: 18px;
     }
   }
 }
@@ -250,4 +242,51 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  .cta__main {
+    width: 30%;
+    margin: 185px auto;
+    &-h2 {
+      @include header_h2;
+      color: variables.$primary-color;
+      text-align: center;
+    }
+    &-button {
+      @include btn_base;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+    }
+    &-caption {
+      @include caption;
+      color: variables.$primary-color;
+      margin: 0 auto;
+      text-align: center;
+    }
+    &-watch {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.4);
+      width: 80%;
+      margin: 7px auto 0 auto;
+      border-radius: 20px;
+      .timer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 70px;
+      }
+      .timer > :first-child {
+        @include header_h2;
+        color: variables.$primary-color;
+      }
+      .timer > :last-child {
+        @include header_h4;
+        color: variables.$primary-color;
+      }
+    }
+  }
 }

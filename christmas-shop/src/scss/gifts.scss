@@ -1,0 +1,27 @@
+@use 'variables';
+@use 'mixins' as *;
+
+.main__gifts {
+    padding: 60px 0;
+    height: 100vh;
+    border-radius: 20px;
+    background-color: #FF4646;
+    background-image: url('./bg-garland.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    &-title {
+        @include header_h1;
+        color: variables.$primary-color;
+        width: 30%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    &-sort {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        width: 50%;
+        margin: 0 auto;
+    }
+}

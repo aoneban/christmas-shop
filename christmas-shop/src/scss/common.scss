@@ -69,9 +69,49 @@ body {
   background-position: center;
   width: 100%;
   height: auto;
-  min-height: 668px;
+  min-height: 496px;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  .contact__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 89%;
+    margin: 56px 0;
+    &-cart {
+      background-color: #ECF3F8;
+      width: 33%;
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &-cart > p:first-of-type {
+      @include action_large;
+      margin: 14px 0 10px 0;
+    }
+    &-cart > :last-child {
+      @include header_h3;
+    }
+  }
+  .social__contacts {
+    width: 100%;
+    margin: 15px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 33px;
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .copyrights {
+    margin: 20px 0 16px 0;
+  }
+  .last-caption {
+    @include caption;
+  }
 }

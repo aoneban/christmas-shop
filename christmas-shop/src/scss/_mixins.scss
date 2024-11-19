@@ -44,6 +44,15 @@
     text-transform: uppercase;
 }
 
+@mixin header_h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: 5.5px;
+    text-transform: uppercase;
+}
+
 @mixin btn_base {
     color: variables.$primary-color;
     background-color: variables.$second-color;
@@ -53,4 +62,13 @@
     border: none;
     letter-spacing: 1px;
     border-radius: 20px;
+}
+
+@mixin action_large {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 152%;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }

@@ -1,7 +1,7 @@
 @use 'variables';
 @use 'mixins' as *;
 
-.maim {
+.main {
   display: flex;
   flex-direction: column;
 }
@@ -46,6 +46,7 @@
 
   .hero__section-btn {
     margin: 15px 0 15px 0;
+    text-decoration: none;
   }
 }
 
@@ -252,10 +253,14 @@
     }
     &-button {
       @include btn_base;
-      display: flex;
+      font-family: "Montserrat", sans-serif;
+      display: block;
       justify-content: center;
       align-items: center;
+      text-decoration: none;
       margin: 20px auto;
+      width: 55%;
+      text-align: center;
     }
     &-caption {
       @include caption;

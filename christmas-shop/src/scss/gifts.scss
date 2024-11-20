@@ -2,34 +2,50 @@
 @use 'mixins' as *;
 
 .main__gifts {
-    padding: 60px 0;
-    height: auto;
-    border-radius: 20px;
-    background-color: #FF4646;
-    background-image: url('./bg-garland.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top;
-    &-title {
-        @include header_h1;
-        color: variables.$primary-color;
-        width: 30%;
-        text-align: center;
-        margin: 0 auto 30px auto;
+  padding: 60px 0;
+  height: auto;
+  border-radius: 20px;
+  background-color: variables.$third-color;
+  background-image: url('./bg-garland.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  margin-bottom: 5px;
+  &-title {
+    @include header_h1;
+    color: variables.$primary-color;
+    width: 30%;
+    text-align: center;
+    margin: 0 auto 22px auto;
+  }
+  &-sort {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    width: 50%;
+    margin: 0 auto;
+    button {
+      padding: 12px 20px;
+      border-radius: 10px;
     }
-    &-sort {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        width: 50%;
-        margin: 0 auto;
-        .btn-action {
-            color: variables.$primary-color;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            background: none;
-            border: none;
-            margin-bottom: 35px;
-        }
+    .btn-action {
+      color: variables.$primary-color;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      margin-bottom: 24px;
+      transition: 0.4s ease;
+      &:hover {
+        transition: 0.4s ease;
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+      }
     }
+    .active {
+      transition: 0.4s ease;
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: default !important;
+    }
+  }
 }

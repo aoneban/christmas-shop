@@ -32,7 +32,7 @@
       margin: 10px 0 0 0;
       text-align: center;
       letter-spacing: 6px;
-      font-weight: 500;
+      font-weight: 600;
       color: variables.$primary-color;
     }
     &-caption {
@@ -47,6 +47,12 @@
   .hero__section-btn {
     margin: 15px 0 15px 0;
     text-decoration: none;
+    transition: 0.3s ease;
+    &:hover {
+      background-color: variables.$primary-color;
+      color: variables.$second-color;
+      transition: 0.3s ease;
+    }
   }
 }
 
@@ -81,6 +87,8 @@
       h5 {
         @include caption;
         color: variables.$third-color;
+        position: relative;
+        top: 5px;
       }
       h4 {
         font-size: 24px;
@@ -90,7 +98,7 @@
       }
       p {
         position: relative;
-        bottom: 10px;
+        bottom: 4px;
         line-height: 148%;
         width: 80%;
       }
@@ -170,6 +178,17 @@
     .arrow-left {
       border: 1px solid rgba(255, 255, 255, 0.4);
     }
+    .arrow-right {
+      transition: 0.4s ease;
+      &:hover {
+        transition: 0.4s ease;
+        background-color: #ecf3f8;
+        cursor: pointer;
+        #arr-right path {
+          stroke: variables.$third-color;
+        }
+      }
+    }
   }
 }
 
@@ -194,6 +213,13 @@
     &-wrapper {
       background-color: #ecf3f8;
       border-radius: 20px;
+      &:hover {
+        cursor: pointer;
+        h4 {
+          transition: 0.4s ease;
+          color: variables.$third-color;
+        }
+      }
       .gifts__products-name {
         position: relative;
         background-color: variables.$primary-color;
@@ -202,6 +228,7 @@
         h4 {
           @include header_h3;
           position: absolute;
+          transition: 0.4s ease;
           top: 39px;
           left: 18px;
         }
@@ -261,6 +288,12 @@
       margin: 20px auto;
       width: 55%;
       text-align: center;
+      transition: 0.3s ease;
+      &:hover {
+        background-color: variables.$primary-color;
+        color: variables.$second-color;
+        transition: 0.3s ease;
+      }
     }
     &-caption {
       @include caption;

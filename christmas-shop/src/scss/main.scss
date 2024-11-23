@@ -16,6 +16,12 @@
   min-height: 524px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    background-image: url('../assets/images/hero_section_768.png');
+  }
   .hero__section {
     display: flex;
     width: 500px;
@@ -23,7 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 33.1vw;
+    min-height: 33.2vw;
     &-header {
       font-family: 'Montserrat', sans-serif;
       line-height: 150%;
@@ -280,7 +286,7 @@
     }
     &-button {
       @include btn_base;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       display: block;
       justify-content: center;
       align-items: center;

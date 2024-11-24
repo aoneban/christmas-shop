@@ -29,44 +29,82 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  li {
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-  }
-  .second {
-    flex-grow: 1;
-    margin-right: auto;
-  }
-  .third,
-  .fourth,
-  .fifth,
-  .sixth {
-    margin-right: 30px;
-  }
-  .fourth {
-    position: relative;
-    right: 20px;
-  }
-  .fifth {
-    position: relative;
-    right: 37px;
-  }
-  .sixth {
-    position: relative;
-    right: 55px;
-  }
-  .first {
-    display: flex;
-    align-items: center;
-    margin-left: 103px;
-    position: relative;
-    left: -10px;
-    img {
+    padding: 2px 0;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+      }
+    }
+    .second {
+      flex-grow: 1;
+      margin-right: auto;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    .third,
+    .fourth,
+    .fifth,
+    .sixth {
+      margin-right: 30px;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    .fourth {
       position: relative;
-      left: 10px;
+      right: 20px;
+    }
+    .fifth {
+      position: relative;
+      right: 37px;
+    }
+    .sixth {
+      position: relative;
+      right: 55px;
+    }
+    .seven {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+        margin-right: 18px;
+      }
+      .burger {
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .bar1,
+      .bar2 {
+        width: 20px;
+        height: 2px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      .change .bar1 {
+        transform: translate(0, 11px) rotate(-45deg);
+      }
+
+      .change .bar2 {
+        transform: translate(0, -11px) rotate(45deg);
+      }
+    }
+    .first {
+      display: flex;
+      align-items: center;
+      margin-left: 103px;
+      position: relative;
+      left: -10px;
+      @media (max-width: 768px) {
+        margin-left: 30px;
+      }
+      img {
+        position: relative;
+        left: 10px;
+      }
     }
   }
 }
@@ -112,6 +150,10 @@ body {
     flex-wrap: wrap;
     width: 89%;
     margin: 58px 0;
+    @media (max-width: 1148px) {
+      width: 98%;
+      gap: 10px;
+    }
     &-cart {
       background-color: #ecf3f8;
       color: variables.$second-color;
@@ -121,16 +163,8 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      &:hover {
-        cursor: pointer;
-        & > p:first-of-type {
-          transition: 0.4s ease;
-          color: variables.$third-color;
-        }
-        & > :last-child {
-          transition: 0.4s ease;
-          color: variables.$third-color;
-        }
+      @media (max-width: 1148px) {
+        width: 100%;
       }
     }
     &-cart > p:first-of-type {
@@ -153,35 +187,15 @@ body {
       gap: 33px;
       #telegram {
         transition: 0.4s ease;
-        &:hover {
-          cursor: pointer;
-          stroke: variables.$third-color;
-          transition: 0.4s ease;
-        }
       }
       #instagram {
         transition: 0.4s ease;
-        &:hover {
-          cursor: pointer;
-          stroke: variables.$third-color;
-          transition: 0.4s ease;
-        }
       }
       #twitter {
         transition: 0.4s ease;
-        &:hover {
-          cursor: pointer;
-          stroke: variables.$third-color;
-          transition: 0.4s ease;
-        }
       }
       #facebook {
         transition: 0.4s ease;
-        &:hover {
-          cursor: pointer;
-          stroke: variables.$third-color;
-          transition: 0.4s ease;
-        }
       }
     }
   }
@@ -193,10 +207,60 @@ body {
     a {
       color: variables.$second-color;
       transition: 0.4s ease;
-      &:hover {
-        color: variables.$third-color;
-        transition: 0.4s ease;
-      }
     }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact__cards-cart:hover {
+    & > p:first-of-type {
+      transition: 0.4s ease;
+      color: variables.$third-color;
+    }
+    & > :last-child {
+      transition: 0.4s ease;
+      color: variables.$third-color;
+    }
+  }
+
+  #telegram:hover,
+  #instagram:hover,
+  #twitter:hover,
+  #facebook:hover {
+    cursor: pointer;
+    stroke: variables.$third-color;
+    transition: 0.4s ease;
+  }
+
+  .last-caption a:hover {
+    color: variables.$third-color;
+    transition: 0.4s ease;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .contact__cards-cart {
+    & > p:first-of-type {
+      transition: 0s ease;
+      color: variables.$second-color;
+    }
+    & > :last-child {
+      transition: 0s ease;
+      color: variables.$second-color;
+    }
+  }
+
+  #telegram,
+  #instagram,
+  #facebook,
+  #twitter {
+    cursor: default;
+    stroke: variables.$second-color;
+    transition: 0s ease;
+  }
+
+  .last-caption a {
+    color: variables.$second-color;
+    transition: 0s ease;
   }
 }

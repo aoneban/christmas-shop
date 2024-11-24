@@ -60,11 +60,6 @@
       border: none;
       margin-bottom: 24px;
       transition: 0.4s ease;
-      &:hover {
-        transition: 0.4s ease;
-        background-color: rgba(255, 255, 255, 0.2);
-        cursor: pointer;
-      }
     }
     .active {
       transition: 0.4s ease;
@@ -77,4 +72,20 @@
 .addition {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-action:hover {
+    transition: 0.4s ease;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+} 
+
+@media (hover: none) and (pointer: coarse) {
+  .btn-action {
+    transition: 0s ease;
+    background-color: none; 
+    cursor: default;
+  }
 }

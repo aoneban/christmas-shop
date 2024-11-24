@@ -58,11 +58,20 @@
     margin: 15px 0 15px 0;
     text-decoration: none;
     transition: 0.3s ease;
-    &:hover {
-      background-color: variables.$primary-color;
-      color: variables.$second-color;
-      transition: 0.3s ease;
-    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero__section-btn:hover {
+    background-color: variables.$primary-color !important;
+    color: variables.$second-color !important;
+    transition: 0.3s ease;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .hero__section-btn {
+    background-color: variables.$second-color;
+    color: variables.$primary-color;
   }
 }
 
@@ -225,14 +234,6 @@
     }
     .arrow-right {
       transition: 0.4s ease;
-      &:hover {
-        transition: 0.4s ease;
-        background-color: #ecf3f8;
-        cursor: pointer;
-        #arr-right path {
-          stroke: variables.$third-color;
-        }
-      }
     }
   }
 }
@@ -264,13 +265,7 @@
     &-wrapper {
       background-color: #ecf3f8;
       border-radius: 20px;
-      &:hover {
-        cursor: pointer;
-        h4 {
-          transition: 0.4s ease;
-          color: variables.$third-color;
-        }
-      }
+
       .gifts__products-name {
         position: relative;
         background-color: variables.$primary-color;
@@ -312,6 +307,17 @@
       color: variables.$primary-color;
       margin-bottom: 18px;
     }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gifts__products-wrapper:hover {
+    cursor: pointer;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .button {
+    cursor: default;
   }
 }
 
@@ -362,11 +368,6 @@
       height: 56px;
       text-align: center;
       transition: 0.3s ease;
-      &:hover {
-        background-color: variables.$primary-color;
-        color: variables.$second-color;
-        transition: 0.3s ease;
-      }
     }
     &-caption {
       @include caption;
@@ -399,5 +400,43 @@
         color: variables.$primary-color;
       }
     }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gifts__products-wrapper:hover h4 {
+    transition: 0.4s ease;
+    color: variables.$third-color;
+  }
+  .arrow-right:hover {
+    transition: 0.4s ease;
+    background-color: variables.$primary-color !important;
+    cursor: pointer;
+    #arr-right path {
+      stroke: variables.$third-color;
+    }
+  }
+  .cta__main-button:hover {
+    background-color: variables.$primary-color;
+    color: variables.$second-color;
+    transition: 0.3s ease;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .gifts__products-wrapper h4 {
+    color: variables.$second-color;
+  }
+  .arrow-right {
+    background-color: variables.$third-color;
+    cursor: pointer;
+    #arr-right path {
+      stroke: variables.$primary-color;
+    }
+  }
+  .cta__main-button {
+    background-color: variables.$second-color;
+    color: variables.$primary-color;
+    transition: 0s ease;
   }
 }

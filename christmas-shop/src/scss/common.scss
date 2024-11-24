@@ -30,44 +30,81 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 2px 0;
-  }
-  li {
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-  }
-  .second {
-    flex-grow: 1;
-    margin-right: auto;
-  }
-  .third,
-  .fourth,
-  .fifth,
-  .sixth {
-    margin-right: 30px;
-  }
-  .fourth {
-    position: relative;
-    right: 20px;
-  }
-  .fifth {
-    position: relative;
-    right: 37px;
-  }
-  .sixth {
-    position: relative;
-    right: 55px;
-  }
-  .first {
-    display: flex;
-    align-items: center;
-    margin-left: 103px;
-    position: relative;
-    left: -10px;
-    img {
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+      }
+    }
+    .second {
+      flex-grow: 1;
+      margin-right: auto;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    .third,
+    .fourth,
+    .fifth,
+    .sixth {
+      margin-right: 30px;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    .fourth {
       position: relative;
-      left: 10px;
+      right: 20px;
+    }
+    .fifth {
+      position: relative;
+      right: 37px;
+    }
+    .sixth {
+      position: relative;
+      right: 55px;
+    }
+    .seven {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+        margin-right: 18px;
+      }
+      .burger {
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .bar1,
+      .bar2 {
+        width: 20px;
+        height: 2px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      .change .bar1 {
+        transform: translate(0, 11px) rotate(-45deg);
+      }
+
+      .change .bar2 {
+        transform: translate(0, -11px) rotate(45deg);
+      }
+    }
+    .first {
+      display: flex;
+      align-items: center;
+      margin-left: 103px;
+      position: relative;
+      left: -10px;
+      @media (max-width: 768px) {
+        margin-left: 30px;
+      }
+      img {
+        position: relative;
+        left: 10px;
+      }
     }
   }
 }
@@ -113,6 +150,10 @@ body {
     flex-wrap: wrap;
     width: 89%;
     margin: 58px 0;
+    @media (max-width: 1148px) {
+      width: 98%;
+      gap: 10px;
+    }
     &-cart {
       background-color: #ecf3f8;
       color: variables.$second-color;
@@ -122,6 +163,9 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      @media (max-width: 1148px) {
+        width: 100%;
+      }
       &:hover {
         cursor: pointer;
         & > p:first-of-type {

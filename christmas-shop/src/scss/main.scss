@@ -22,6 +22,10 @@
   @media (max-width: 768px) {
     background-image: url('../assets/images/hero_section_768.png');
   }
+  @media (max-width: 380px) {
+    min-height: 572px;
+    background-image: url('../assets/images/hero_section_380.png');
+  }
   .hero__section {
     display: flex;
     width: 500px;
@@ -29,7 +33,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 33.2vw;
+    min-height: 32.8vw;
     &-header {
       font-family: 'Montserrat', sans-serif;
       line-height: 150%;
@@ -64,60 +68,76 @@
 
 .about {
   background-image: url('/src/assets/images/about_section.png');
+  padding: 60px 82px;
+  background-color: variables.$primary-color;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: auto;
-  min-height: 639px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @media (max-width: 768px) {
+    padding: 59px 8px;
+  }
   .about-wrapper {
-    display: flex;
-    align-items: center;
-    max-width: 88.5%;
-    height: 528px;
-    margin: 0px auto 0 auto;
-    background-color: variables.$primary-color;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: variables.$primary-color;
     border-radius: 20px;
+    @media (max-width: 560px) {
+      grid-template-columns: none;
+      grid-template-rows: 2.715fr 4fr;
+    }
     .about__left-content {
-      width: 50%;
-      padding: 60px 60px 80px 60px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      margin-top: 21px;
+      max-width: 469px;
+      padding: 100px 0 160px 60px;
+      @media (max-width: 768px) {
+        padding: 100px 0 107px 60px;
+      }
+      @media (max-width: 560px) {
+        padding: 53px 0 0px 19px;
+      }
+
       h5 {
         @include caption;
         color: variables.$third-color;
-        position: relative;
-        top: 5px;
+        margin-top: 60px;
+        margin-bottom: 20px;
+        @media (max-width: 768px) {
+          margin-top: 6px;
+        }
       }
       h4 {
         font-size: 24px;
         text-transform: uppercase;
         line-height: 152%;
-        letter-spacing: 4px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        margin-bottom: 20px;
+        @media (max-width: 768px) {
+          width: 90%;
+        }
+        @media (max-width: 380px) {
+          width: 95%;
+        }
       }
       p {
-        position: relative;
-        bottom: 4px;
         line-height: 148%;
-        width: 80%;
+        font-weight: 400;
+        font-size: 16px;
+        @media (max-width: 768px) {
+          width: 85%;
+        }
+        @media (max-width: 380px) {
+          width: 95%;
+        }
       }
     }
     .about__right-content {
-      width: 50%;
-      position: relative;
-      img {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-        display: block;
+      background-image: url('./snowman_santa.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      @media (max-width: 560px) {
+        height: 522px;
       }
     }
   }
@@ -137,11 +157,17 @@
   overflow: hidden;
   .slider__start {
     margin-top: 57px;
+    @media (max-width: 768px) {
+      margin-top: 60px;
+    }
+    @media (max-width: 380px) {
+      margin-top: 62px;
+    }
     h5 {
       @include caption;
       color: variables.$primary-color;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 0px;
     }
     h4 {
       color: variables.$primary-color;
@@ -158,6 +184,13 @@
     justify-content: space-between;
     width: 88%;
     gap: 21px;
+    @media (max-width: 768px) {
+      width: 98%;
+      gap: 23px;
+    }
+    @media (max-width: 380px) {
+      width: 95%;
+    }
     p {
       font-size: 80px;
       text-transform: uppercase;
@@ -173,6 +206,12 @@
     display: flex;
     justify-content: flex-end;
     width: 91%;
+    @media (max-width: 768px) {
+      width: 103%;
+    }
+    @media (max-width: 380px) {
+      width: 106%;
+    }
     button {
       margin-right: 20px;
       background: none;
@@ -210,12 +249,15 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  @media (max-width: 768px) {
+    padding-bottom: 59px;
+  }
   .gifts__products {
-    width: 89%;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
     gap: 13px;
-    justify-content: space-between;
+    justify-content: center;
     &-wrapper {
       background-color: #ecf3f8;
       border-radius: 20px;
@@ -254,7 +296,13 @@
       color: variables.$primary-color;
       text-align: center;
       margin-bottom: 16px;
-      margin-top: 63px;
+      margin-top: 57px;
+      @media (max-width: 768px) {
+        margin-top: 58px;
+      }
+      @media (max-width: 380px) {
+        margin-top: 62px;
+      }
     }
     h2 {
       @include header_h2;
@@ -278,7 +326,20 @@
   overflow: hidden;
   .cta__main {
     width: 30%;
-    margin: 185px auto;
+    margin: 179px auto;
+    @media (max-width: 1348px) {
+      width: 50%;
+    }
+    @media (max-width: 768px) {
+      width: 56%;
+      margin: 185px auto;
+    }
+    @media (max-width: 622px) {
+      width: 80%;
+    }
+    @media (max-width: 480px) {
+      width: 98%;
+    }
     &-h2 {
       @include header_h2;
       color: variables.$primary-color;
@@ -292,7 +353,10 @@
       align-items: center;
       text-decoration: none;
       margin: 20px auto;
-      width: 55%;
+      padding-right: 25px;
+      padding-left: 25px;
+      width: 235px;
+      height: 56px;
       text-align: center;
       transition: 0.3s ease;
       &:hover {
@@ -312,7 +376,7 @@
       justify-content: center;
       align-items: center;
       background-color: rgba(255, 255, 255, 0.4);
-      width: 80%;
+      width: 344px;
       margin: 7px auto 0 auto;
       border-radius: 20px;
       .timer {

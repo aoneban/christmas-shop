@@ -258,6 +258,9 @@
     flex-wrap: wrap;
     gap: 13px;
     justify-content: center;
+    @media (max-width: 768px) {
+      gap: 14px;
+    }
     &-wrapper {
       background-color: #ecf3f8;
       border-radius: 20px;

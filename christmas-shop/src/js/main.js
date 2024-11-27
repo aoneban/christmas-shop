@@ -1,10 +1,11 @@
 import '../scss/styles.scss';
+import { data } from './data';
+import { ProductCard } from './product';
 
 /* start timer*/
 
 document.addEventListener('DOMContentLoaded', function () {
-
-  const deadline = new Date(2024, 11, 31, 23, 59, 59);
+  const deadline = new Date(Date.UTC(2024, 11, 31, 23, 59, 59));
 
   let timerId = null;
 
@@ -50,10 +51,10 @@ burger.addEventListener(
 
     return function () {
       window.addEventListener('resize', () => {
-        if(window.innerWidth > 768) {
+        if (window.innerWidth > 768) {
           close();
         }
-      })
+      });
       content.addEventListener('click', (event) => {
         if (event.target) {
           close();
@@ -80,3 +81,33 @@ burger.addEventListener(
 );
 
 /* end burger-menu open */
+
+/* start random gallery */
+
+function getRandomNumber() {
+  let totalCardsWeNeed = 4;
+  let totalCardsInArray = 37;
+  const arrayRandomNumbers = [];
+  while (arrayRandomNumbers.length < totalCardsWeNeed) {
+    let singleRandomFigure = Math.floor(Math.random() * totalCardsInArray);
+    if (!arrayRandomNumbers.includes(singleRandomFigure)) {
+      arrayRandomNumbers.push(singleRandomFigure);
+    }
+  }
+  return arrayRandomNumbers;
+}
+
+const random = getRandomNumber();
+const sliders = document.querySelector('.gifts__products');
+for (let i = 0; i < 4; i += 1) {
+  let product = new ProductCard(
+    data[random[i]].name,
+    data[random[i]].color,
+    data[random[i]].image,
+    data[random[i]].category
+  );
+  let prodView = product.createProductCard();
+  sliders.append(prodView);
+}
+
+/* finish random gallery */

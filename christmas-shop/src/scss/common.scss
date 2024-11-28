@@ -193,6 +193,10 @@ body {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .contact__cards-cart:hover {
     & > p:first-of-type {

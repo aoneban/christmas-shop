@@ -88,14 +88,29 @@
             <img src="/house.png" alt="house" />
           </div>
           <div class="slider__finish">
-            <button class="arrow-left">
-              <img src="/arrow-left.png" alt="arrow-left" />
-            </button>
-            <button class="arrow-right">
+            <button id="ar-left" class="arrow-left">
               <svg
+                id="arr-left"
                 width="14"
                 height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.5 7H1M1 7L7 1M1 7L7 13"
+                  stroke-opacity="1"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button id="ar-right" class="arrow-right">
+              <svg
                 id="arr-right"
+                width="14"
+                height="14"
                 viewBox="0 0 14 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -103,6 +118,7 @@
                 <path
                   d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
                   stroke="white"
+                  stroke-opacity="1"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />

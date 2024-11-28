@@ -193,6 +193,7 @@
     justify-content: space-between;
     width: 88%;
     gap: 21px;
+    transition: transform 0.5s ease;
     @media (max-width: 768px) {
       width: 98%;
       gap: 23px;
@@ -223,19 +224,48 @@
     }
     button {
       margin-right: 20px;
-      background: none;
       width: 56px;
       height: 56px;
       border-radius: 20px;
       border: 1px solid variables.$primary-color;
     }
-    .arrow-left {
-      border: 1px solid rgba(255, 255, 255, 0.4);
-    }
     .arrow-right {
       transition: 0.4s ease;
     }
   }
+}
+
+button:enabled {
+  background-color: variables.$third-color;
+  #arr-right path
+  #arr-left path{
+    stroke-opacity: 1;
+    stroke: variables.$primary-color;
+  }
+  
+}
+
+button:enabled:hover {
+  #arr-right path,
+  #arr-left path {
+    stroke-opacity: 1;
+    stroke: variables.$third-color;
+  }
+
+}
+
+button:disabled {
+  #arr-right path,
+  #arr-left path {
+    stroke-opacity: 0.4;
+  }
+  border: 1px solid rgba(255, 255, 255, 0.4)!important;
+  background: none!important;
+  cursor: default!important;
+}
+
+button:disabled:hover {
+  background: none!important;
 }
 
 .gifts {
@@ -258,6 +288,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 13px;
+    margin-top: 24px;
     justify-content: center;
     @media (max-width: 768px) {
       gap: 14px;
@@ -305,7 +336,7 @@
     h2 {
       @include header_h2;
       color: variables.$primary-color;
-      margin-bottom: 18px;
+      margin-bottom: -6px;
     }
   }
 }
@@ -408,13 +439,11 @@
     transition: 0.4s ease;
     color: variables.$third-color;
   }
-  .arrow-right:hover {
+  .arrow-right:hover,
+  .arrow-left:hover {
     transition: 0.4s ease;
-    background-color: variables.$primary-color !important;
+    background: variables.$primary-color!important;
     cursor: pointer;
-    #arr-right path {
-      stroke: variables.$third-color;
-    }
   }
   .cta__main-button:hover {
     background-color: variables.$primary-color;
@@ -427,8 +456,9 @@
   .gifts__products-wrapper h4 {
     color: variables.$second-color;
   }
-  .arrow-right {
-    background-color: variables.$third-color;
+  .arrow-right,
+  .arrow-left {
+    background-color: variables.$third-color!important;
     cursor: pointer;
     #arr-right path {
       stroke: variables.$primary-color;

@@ -42,72 +42,120 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* start burger-menu open */
 
-const burger = document.getElementById('burger');
-const content = document.querySelector('.overlay-content');
-burger.addEventListener(
-  'click',
-  (function () {
-    let flag = false;
+function launchBurgerMenu() {
+  const burger = document.getElementById('burger');
+  const content = document.querySelector('.overlay-content');
 
-    return function () {
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-          close();
+  burger.addEventListener(
+    'click',
+    (function () {
+      let flag = false;
+
+      return function () {
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 768) {
+            close();
+          }
+        });
+        content.addEventListener('click', (event) => {
+          if (event.target) {
+            close();
+          }
+        });
+
+        function open() {
+          burger.classList.add('change');
+          document.getElementById('myNav').style.width = '100%';
+          document.body.style.overflow = 'hidden';
+          flag = true;
         }
-      });
-      content.addEventListener('click', (event) => {
-        if (event.target) {
-          close();
+
+        function close() {
+          burger.classList.remove('change');
+          document.getElementById('myNav').style.width = '0';
+          document.body.style.overflow = 'visible';
+          flag = false;
         }
-      });
 
-      function open() {
-        burger.classList.add('change');
-        document.getElementById('myNav').style.width = '100%';
-        document.body.style.overflow = 'hidden';
-        flag = true;
-      }
-
-      function close() {
-        burger.classList.remove('change');
-        document.getElementById('myNav').style.width = '0';
-        document.body.style.overflow = 'visible';
-        flag = false;
-      }
-
-      return !flag ? open() : close();
-    };
-  })()
-);
+        return !flag ? open() : close();
+      };
+    })()
+  );
+}
+launchBurgerMenu();
 
 /* end burger-menu open */
 
 /* start random gallery */
 
-function getRandomNumber() {
-  let totalCardsWeNeed = 4;
-  let totalCardsInArray = 37;
-  const arrayRandomNumbers = [];
-  while (arrayRandomNumbers.length < totalCardsWeNeed) {
-    let singleRandomFigure = Math.floor(Math.random() * totalCardsInArray);
-    if (!arrayRandomNumbers.includes(singleRandomFigure)) {
-      arrayRandomNumbers.push(singleRandomFigure);
+function showRandomProductCards() {
+  const getRandomNumber = () => {
+    let totalCardsWeNeed = 4;
+    let totalCardsInArray = 36;
+    const arrayRandomNumbers = [];
+    while (arrayRandomNumbers.length < totalCardsWeNeed) {
+      let singleRandomFigure = Math.floor(Math.random() * totalCardsInArray);
+      if (!arrayRandomNumbers.includes(singleRandomFigure)) {
+        arrayRandomNumbers.push(singleRandomFigure);
+      }
     }
+    return arrayRandomNumbers;
+  };
+
+  const random = getRandomNumber();
+  const sliders = document.querySelector('.gifts__products');
+  for (let i = 0; i < 4; i += 1) {
+    let product = new ProductCard(
+      data[random[i]].name,
+      data[random[i]].color,
+      data[random[i]].image,
+      data[random[i]].category
+    );
+    let prodView = product.createProductCard();
+    sliders.append(prodView);
   }
-  return arrayRandomNumbers;
 }
 
-const random = getRandomNumber();
-const sliders = document.querySelector('.gifts__products');
-for (let i = 0; i < 4; i += 1) {
-  let product = new ProductCard(
-    data[random[i]].name,
-    data[random[i]].color,
-    data[random[i]].image,
-    data[random[i]].category
-  );
-  let prodView = product.createProductCard();
-  sliders.append(prodView);
-}
+showRandomProductCards();
 
 /* finish random gallery */
+
+/* start slider */
+
+(function () {
+  const slider = document.querySelector('.slider__middle');
+  let widthOfSlider = slider.offsetWidth;
+  let spacing = widthOfSlider / 5;
+  let count = 0;
+  let steps = 0;
+  let totalSteps = 3;
+
+  const arrowRight = document.getElementById('ar-right');
+  const arrowLeft = document.getElementById('ar-left');
+
+  arrowRight.addEventListener('click', function () {
+    if (steps < totalSteps) { 
+      count += spacing;
+      steps += 1;
+      slider.style.transform = `translateX(-${count}px)`;
+      arrowLeft.disabled = false; 
+    }
+    if (steps >= totalSteps) {
+      arrowRight.disabled = true; 
+    }
+  });
+
+  arrowLeft.addEventListener('click', function () {
+    if (steps > 0) {
+      count -= spacing;
+      steps -= 1;
+      slider.style.transform = `translateX(-${count}px)`;
+      arrowRight.disabled = false; 
+    }
+    if (steps <= 0) {
+      arrowLeft.disabled = true; 
+    }
+  });
+
+  arrowLeft.disabled = true;
+})();

@@ -102,3 +102,58 @@ buttons.addEventListener('click', (event) => {
 });
 
 /* finish sort product cards */
+
+/* start scroll button */
+
+(function(){
+  
+  let flagHeight = false;
+  let flagWidth = false;
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    let startWidthWindow = window.innerWidth;
+    if (startWidthWindow < 768) {
+      flagWidth = true;
+    }
+  });
+  
+  const button = document.getElementById('scroller');
+  
+  window.addEventListener('scroll', () => {
+    let height = window.innerHeight;
+    if (window.scrollY >= height + 300) {
+      flagHeight = true;
+    } else {
+      flagHeight = false;
+    }
+    if (flagHeight && flagWidth) {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+  
+  window.addEventListener('resize', () => {
+    let width = window.innerWidth;
+    if (width <= 768) {
+      flagWidth = true;
+    } else if (width >= 769) {
+      flagWidth = false;
+    }
+    if (flagHeight && flagWidth) {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+  
+  button.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+})()
+
+
+/* finish scroll button */

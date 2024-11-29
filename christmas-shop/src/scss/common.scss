@@ -126,6 +126,7 @@ body {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  position: relative;
   .contact__cards {
     display: flex;
     justify-content: space-between;
@@ -189,6 +190,29 @@ body {
     a {
       color: variables.$second-color;
       transition: 0.4s ease;
+    }
+  }
+
+  .scroll__top {
+    display: none;
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    background-color: variables.$primary-color;
+    border: 1px solid variables.$third-color;;
+    border-radius: 50%;
+    cursor: pointer;
+    right: 2px;
+    bottom: 10px;
+    #scr-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
     }
   }
 }

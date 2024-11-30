@@ -16,20 +16,21 @@
     background-color: rgba(0,0,0,0.9);
   }
 
+  .wrapper {
+    position: relative;
+  }
+
  
   .modal-content {
     background-color: #ccc;
     margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 80%;
-    max-width: 300px;
-  }
-
-  .gifts__modal-wrapper {
-    
+    height: auto;
+    width: 20%;
+    max-width: 400px;
   }
   
   #caption {

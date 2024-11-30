@@ -109,7 +109,9 @@ function showRandomProductCards() {
       data[random[i]].name,
       data[random[i]].color,
       data[random[i]].image,
-      data[random[i]].category
+      data[random[i]].category,
+      data[random[i]].description,
+      data[random[i]].superpowers
     );
     let prodView = product.createProductCard();
     sliders.append(prodView);

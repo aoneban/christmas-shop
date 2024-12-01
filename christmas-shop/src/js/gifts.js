@@ -62,7 +62,9 @@ function generateProducts() {
       elem.name,
       elem.color,
       elem.image,
-      elem.category
+      elem.category,
+      elem.description,
+      elem.superpowers
     );
     let prodView = product.createProductCard();
     products.append(prodView);

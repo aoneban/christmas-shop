@@ -13,7 +13,7 @@ export class ProductCard {
   createProductCard() {
     const card = this.cartTemplate();
     card.addEventListener('click', this.createModalCard.bind(this));
-    return card; 
+    return card;
   }
 
   cartTemplate() {
@@ -37,14 +37,13 @@ export class ProductCard {
     const title = document.createElement('h4');
     title.textContent = this.name;
 
-    imgWrapper.append(img)
+    imgWrapper.append(img);
     gift.append(category, title);
     wrapper.append(imgWrapper, gift);
     return wrapper;
   }
 
   createModalCard() {
-
     const injectCart = this.cartTemplate();
 
     const wrapper = document.createElement('div');
@@ -58,12 +57,12 @@ export class ProductCard {
     powersWrapper.classList.add('powers-wrapper');
 
     const titlePower = document.createElement('h4');
-    titlePower.classList.add('title-powers')
-    titlePower.textContent = 'Adds superpowers to:'
+    titlePower.classList.add('title-powers');
+    titlePower.textContent = 'Adds superpowers to:';
 
     for (const prop in this.superpowers) {
       let countStarts = this.superpowers[prop].replace(/[+0]/g, '');
-      const name = document.createElement('div')
+      const name = document.createElement('div');
       name.classList.add('price');
       name.innerHTML = `
       <table border="1" style="width: 100%"> 
@@ -75,8 +74,8 @@ export class ProductCard {
           </td> 
         </tr> 
       </table>
-      `
-      powersWrapper.append(name)
+      `;
+      powersWrapper.append(name);
     }
 
     const modal = document.createElement('div');
@@ -86,7 +85,7 @@ export class ProductCard {
 
     const close = document.createElement('button');
     close.classList.add('close');
-   
+
     const closeImg = document.createElement('img');
     closeImg.src = '../../close.png';
 
@@ -95,19 +94,27 @@ export class ProductCard {
 
     close.append(closeImg);
 
-    wrapper.append(injectCart, description, titlePower, powersWrapper, close)
+    wrapper.append(injectCart, description, titlePower, powersWrapper, close);
 
     content.append(wrapper);
     modal.append(content);
     document.body.style.overflow = 'hidden';
     document.body.appendChild(modal);
 
-    const closeModal = () => {
-      document.body.style.overflow = 'visible';
-      document.body.removeChild(modal);
-    };
-    modal.querySelector('.close').addEventListener('click', closeModal);
+    modal.querySelector('.close').addEventListener('click', this.closeModal);
+
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        this.closeModal();
+      }
+    });
 
     return modal;
+  }
+
+  closeModal() {
+    const modal = document.getElementById('myModal');
+    document.body.style.overflow = 'visible';
+    document.body.removeChild(modal);
   }
 }

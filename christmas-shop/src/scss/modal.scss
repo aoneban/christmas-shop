@@ -38,7 +38,7 @@
         .gifts__products-name {
           border-top-left-radius: 20px;
           border-top-right-radius: 20px;
-          background-color: white;
+          background-color: variables.$primary-color;
           padding: 7px;
           p {
             @include header_h4;
@@ -55,19 +55,19 @@
         }
       }
       .description {
-        background-color: white;
+        background-color: variables.$primary-color;
         font-family: 'Montserrat';
         padding: 0 20px;
         font-weight: 400;
         line-height: 148%;
       }
       .title-powers {
-        background-color: white;
+        background-color: variables.$primary-color;
         @include header_h4;
         padding: 20px 20px 10px;
       }
       .powers-wrapper {
-        background-color: white;
+        background-color: variables.$primary-color;
         padding-bottom: 20px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
@@ -141,7 +141,6 @@ td {
 
 .close:hover,
 .close:focus {
-  color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }

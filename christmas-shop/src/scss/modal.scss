@@ -21,6 +21,9 @@
     align-items: center;
     height: auto;
     max-width: 400px;
+    @media (max-width: 420px) {
+      max-width: 364px;
+    }
     .wrapper {
       position: relative;
       .gifts__products-wrapper {

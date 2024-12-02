@@ -125,39 +125,86 @@ showRandomProductCards();
 /* start slider */
 
 (function () {
-  const slider = document.querySelector('.slider__middle');
-  let widthOfSlider = slider.offsetWidth;
-  let spacing = widthOfSlider / 5;
-  let count = 0;
-  let steps = 0;
-  let totalSteps = 3;
+  function getDistanceToParent(element) {
+    const elementRect = element.getBoundingClientRect();
+    const parentRect = element.parentElement.getBoundingClientRect();
+    const distanceTop = elementRect.top - parentRect.top;
+    const distanceLeft = elementRect.left - parentRect.left;
+    return { top: distanceTop, left: distanceLeft };
+  }
 
   const arrowRight = document.getElementById('ar-right');
   const arrowLeft = document.getElementById('ar-left');
 
-  arrowRight.addEventListener('click', function () {
-    if (steps < totalSteps) { 
-      count += spacing;
-      steps += 1;
-      slider.style.transform = `translateX(-${count}px)`;
-      arrowLeft.disabled = false; 
-    }
-    if (steps >= totalSteps) {
-      arrowRight.disabled = true; 
-    }
-  });
+  let count = 0;
+  let steps = 0;
+  let totalSteps = 3;
+  let spacing = 0;
 
-  arrowLeft.addEventListener('click', function () {
-    if (steps > 0) {
-      count -= spacing;
-      steps -= 1;
-      slider.style.transform = `translateX(-${count}px)`;
-      arrowRight.disabled = false; 
-    }
-    if (steps <= 0) {
-      arrowLeft.disabled = true; 
-    }
-  });
+  function updateSpacing() {
+    count = 0;
+    steps = 0;
+    spacing = 0;
+    document.querySelector('.slider__middle').style.transform = 'translateX(0)';
 
-  arrowLeft.disabled = true;
+    const slider = document.querySelector('.slider__middle');
+    const distances = getDistanceToParent(slider);
+    const addSpaces = distances.left * 2
+
+    const gifts = document.getElementById('gifts');
+    const widthOfSlider = slider.scrollWidth;
+    const widthGiftsBlock = gifts.offsetWidth;
+    if (widthGiftsBlock <= 768) {
+      totalSteps = 6;
+    } else {
+      totalSteps = 3;
+    }
+    spacing = (widthOfSlider + addSpaces - widthGiftsBlock) / totalSteps;
+
+    arrowLeft.disabled = true;
+    arrowRight.disabled = false;
+  }
+
+  window.addEventListener('resize', updateSpacing);
+
+  function initializeArrows() {
+    updateSpacing();
+
+    arrowRight.addEventListener('click', function () {
+      if (steps < totalSteps) {
+        count += spacing;
+        steps += 1;
+        document.querySelector(
+          '.slider__middle'
+        ).style.transform = `translateX(-${count}px)`;
+        arrowLeft.disabled = false;
+      }
+      if (steps >= totalSteps) {
+        arrowRight.disabled = true;
+      }
+    });
+
+    arrowLeft.addEventListener('click', function () {
+      if (steps > 0) {
+        count -= spacing;
+        steps -= 1;
+        if (Math.sign(count) === -1) {
+          count = 0;
+        }
+        document.querySelector(
+          '.slider__middle'
+        ).style.transform = `translateX(-${count}px)`;
+        arrowRight.disabled = false;
+      }
+      if (steps <= 0) {
+        arrowLeft.disabled = true;
+      }
+    });
+
+    arrowLeft.disabled = true;
+  }
+
+  initializeArrows();
 })();
+
+/* finish slider */

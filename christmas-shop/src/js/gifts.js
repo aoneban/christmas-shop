@@ -114,7 +114,7 @@ buttons.addEventListener('click', (event) => {
   
   document.addEventListener('DOMContentLoaded', () => {
     let startWidthWindow = window.innerWidth;
-    if (startWidthWindow < 768) {
+    if (startWidthWindow <= 768) {
       flagWidth = true;
     }
   });

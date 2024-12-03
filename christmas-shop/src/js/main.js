@@ -150,6 +150,7 @@ showRandomProductCards();
     const slider = document.querySelector('.slider__middle');
     const distances = getDistanceToParent(slider);
     const addSpaces = distances.left * 2
+    console.log('это оно', addSpaces / 2)
 
     const gifts = document.getElementById('gifts');
     const widthOfSlider = slider.scrollWidth;

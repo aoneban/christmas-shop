@@ -461,8 +461,9 @@ button:disabled:hover {
   .arrow-left {
     background-color: variables.$third-color!important;
     cursor: pointer;
-    #arr-right path {
-      stroke: variables.$primary-color;
+    #arr-right path,
+    #arr-left path {
+      stroke: variables.$primary-color!important;
     }
   }
   .cta__main-button {

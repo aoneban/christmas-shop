@@ -38,9 +38,12 @@ function launchBurgerMenu() {
         }
 
         function close() {
+          const modal = document.getElementById('myModal')
           burger.classList.remove('change');
           document.getElementById('myNav').style.width = '0';
-          document.body.style.overflow = 'visible';
+          if(!modal) {
+            document.body.style.overflow = 'visible';
+          }
           flag = false;
         }
 
@@ -122,8 +125,7 @@ buttons.addEventListener('click', (event) => {
   const button = document.getElementById('scroller');
   
   window.addEventListener('scroll', () => {
-    let height = window.innerHeight;
-    if (window.scrollY >= height + 300) {
+    if (window.scrollY >= 300) {
       flagHeight = true;
     } else {
       flagHeight = false;

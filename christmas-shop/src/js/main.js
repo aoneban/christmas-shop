@@ -71,10 +71,10 @@ function launchBurgerMenu() {
         }
 
         function close() {
-          const modal = document.getElementById('myModal')
+          const modal = document.getElementById('myModal');
           burger.classList.remove('change');
           document.getElementById('myNav').style.width = '0';
-          if(!modal) {
+          if (!modal) {
             document.body.style.overflow = 'visible';
           }
           flag = false;
@@ -152,8 +152,7 @@ showRandomProductCards();
 
     const slider = document.querySelector('.slider__middle');
     const distances = getDistanceToParent(slider);
-    const addSpaces = distances.left * 2
-    console.log('отступы :', (addSpaces / 2) + 10)
+    const addSpaces = distances.left * 2;
 
     const gifts = document.getElementById('gifts');
     const widthOfSlider = slider.scrollWidth;
@@ -172,8 +171,6 @@ showRandomProductCards();
   window.addEventListener('resize', updateSpacing);
 
   function initializeArrows() {
-    updateSpacing();
-
     arrowRight.addEventListener('click', function () {
       if (steps < totalSteps) {
         count += spacing;
@@ -208,13 +205,19 @@ showRandomProductCards();
     arrowLeft.disabled = true;
   }
 
-  initializeArrows();
+  window.onload = function() {
+    setTimeout(() => {
+      updateSpacing();
+      initializeArrows();
+    }, 100); 
+  };
 })();
 
+
 window.addEventListener('resize', () => {
-  const modal = document.getElementById('myModal')
-  if(modal) {
-    document.body.style.overflow = 'hidden'
+  const modal = document.getElementById('myModal');
+  if (modal) {
+    document.body.style.overflow = 'hidden';
   }
-})
+});
 /* finish slider */

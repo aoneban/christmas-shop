@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
     const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
     const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+
     $days.textContent = days < 10 ? days : days;
     $hours.textContent = hours < 10 ? hours : hours;
     $minutes.textContent = minutes < 10 ? minutes : minutes;
     $seconds.textContent = seconds < 10 ? seconds : seconds;
+
     $days.dataset.title = 'days';
     $hours.dataset.title = 'hours';
     $minutes.dataset.title = 'minutes';
@@ -45,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function launchBurgerMenu() {
   const burger = document.getElementById('burger');
   const content = document.querySelector('.overlay-content');
+  const modal = document.getElementById('myModal');
+  const myNav = document.getElementById('myNav');
+  const body = document.body
 
   burger.addEventListener(
     'click',
@@ -65,17 +70,16 @@ function launchBurgerMenu() {
 
         function open() {
           burger.classList.add('change');
-          document.getElementById('myNav').style.width = '100%';
-          document.body.style.overflow = 'hidden';
+          myNav.style.width = '100%';
+          body.style.overflow = 'hidden';
           flag = true;
         }
 
         function close() {
-          const modal = document.getElementById('myModal');
           burger.classList.remove('change');
-          document.getElementById('myNav').style.width = '0';
+          myNav.style.width = '0';
           if (!modal) {
-            document.body.style.overflow = 'visible';
+            body.style.overflow = 'visible';
           }
           flag = false;
         }
@@ -92,10 +96,13 @@ launchBurgerMenu();
 /* start random gallery */
 
 function showRandomProductCards() {
+
   const getRandomNumber = () => {
+
     let totalCardsWeNeed = 4;
     let totalCardsInArray = 36;
     const arrayRandomNumbers = [];
+
     while (arrayRandomNumbers.length < totalCardsWeNeed) {
       let singleRandomFigure = Math.floor(Math.random() * totalCardsInArray);
       if (!arrayRandomNumbers.includes(singleRandomFigure)) {
@@ -106,8 +113,10 @@ function showRandomProductCards() {
   };
 
   const random = getRandomNumber();
+  const countOfCards = 4;
   const sliders = document.querySelector('.gifts__products');
-  for (let i = 0; i < 4; i += 1) {
+
+  for (let i = 0; i < countOfCards; i += 1) {
     let product = new ProductCard(
       data[random[i]].name,
       data[random[i]].color,
@@ -138,30 +147,31 @@ showRandomProductCards();
 
   const arrowRight = document.getElementById('ar-right');
   const arrowLeft = document.getElementById('ar-left');
+  const slider = document.querySelector('.slider__middle');
 
   let count = 0;
   let steps = 0;
   let totalSteps = 3;
   let spacing = 0;
+  const paddings = 2
 
   function updateSpacing() {
+    
     count = 0;
     steps = 0;
     spacing = 0;
-    document.querySelector('.slider__middle').style.transform = 'translateX(0)';
 
-    const slider = document.querySelector('.slider__middle');
+    slider.style.transform = 'translateX(0)';
+
     const distances = getDistanceToParent(slider);
-    const addSpaces = distances.left * 2;
+    const addSpaces = distances.left * paddings;
 
     const gifts = document.getElementById('gifts');
     const widthOfSlider = slider.scrollWidth;
     const widthGiftsBlock = gifts.offsetWidth;
-    if (widthGiftsBlock <= 768) {
-      totalSteps = 6;
-    } else {
-      totalSteps = 3;
-    }
+
+    widthGiftsBlock <= 768 ? (totalSteps = 6) : (totalSteps = 3);
+
     spacing = (widthOfSlider + addSpaces - widthGiftsBlock) / totalSteps;
 
     arrowLeft.disabled = true;
@@ -175,9 +185,7 @@ showRandomProductCards();
       if (steps < totalSteps) {
         count += spacing;
         steps += 1;
-        document.querySelector(
-          '.slider__middle'
-        ).style.transform = `translateX(-${count}px)`;
+        slider.style.transform = `translateX(-${count}px)`;
         arrowLeft.disabled = false;
       }
       if (steps >= totalSteps) {
@@ -192,9 +200,7 @@ showRandomProductCards();
         if (Math.sign(count) === -1) {
           count = 0;
         }
-        document.querySelector(
-          '.slider__middle'
-        ).style.transform = `translateX(-${count}px)`;
+        slider.style.transform = `translateX(-${count}px)`;
         arrowRight.disabled = false;
       }
       if (steps <= 0) {
@@ -205,19 +211,12 @@ showRandomProductCards();
     arrowLeft.disabled = true;
   }
 
-  window.onload = function() {
+  window.onload = function () {
     setTimeout(() => {
       updateSpacing();
       initializeArrows();
-    }, 100); 
+    }, 100);
   };
 })();
 
-
-window.addEventListener('resize', () => {
-  const modal = document.getElementById('myModal');
-  if (modal) {
-    document.body.style.overflow = 'hidden';
-  }
-});
 /* finish slider */

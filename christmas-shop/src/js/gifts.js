@@ -12,6 +12,9 @@ import { ProductCard } from './product';
 function launchBurgerMenu() {
   const burger = document.getElementById('burger');
   const content = document.querySelector('.overlay-content');
+  const modal = document.getElementById('myModal');
+  const myNav = document.getElementById('myNav');
+  const body = document.body;
 
   burger.addEventListener(
     'click',
@@ -32,17 +35,16 @@ function launchBurgerMenu() {
 
         function open() {
           burger.classList.add('change');
-          document.getElementById('myNav').style.width = '100%';
-          document.body.style.overflow = 'hidden';
+          myNav.style.width = '100%';
+          body.style.overflow = 'hidden';
           flag = true;
         }
 
         function close() {
-          const modal = document.getElementById('myModal')
           burger.classList.remove('change');
-          document.getElementById('myNav').style.width = '0';
-          if(!modal) {
-            document.body.style.overflow = 'visible';
+          myNav.style.width = '0';
+          if (!modal) {
+            body.style.overflow = 'visible';
           }
           flag = false;
         }
@@ -80,50 +82,63 @@ generateProducts();
 
 /* start sort product cards */
 
-const buttons = document.querySelector('.main__gifts-sort');
-buttons.addEventListener('click', (event) => {
-  const oldActiveButtons = document.querySelectorAll('.btn-action');
-  oldActiveButtons.forEach((el) => el.classList.remove('active'));
-
+function handleSortButtonClick(event) {
+  deactivateOldButtons();
+  
   const currentButton = event.target;
   const currentButtonValue = currentButton.textContent;
+  currentButton.classList.add('active');
+  
+  filterProducts(currentButtonValue);
+}
 
+function deactivateOldButtons() {
+  const oldActiveButtons = document.querySelectorAll('.btn-action');
+  oldActiveButtons.forEach((button) => button.classList.remove('active'));
+}
+
+function filterProducts(currentButtonValue) {
   const products = document.querySelectorAll('.gifts__products-wrapper');
-
-  products.forEach((elem) => {
-    currentButton.classList.add('active');
-
-    if (elem.classList.contains('hidden')) elem.classList.remove('hidden');
-    const paragraph = elem.querySelector('.gifts__products-name p');
-    const currentElement = paragraph.textContent.toLowerCase();
-
-    if (currentButtonValue !== currentElement) {
-      elem.classList.add('hidden');
-    }
+  
+  products.forEach((product) => {
+    
     if (currentButtonValue === 'All') {
-      elem.classList.remove('hidden');
+      product.classList.remove('hidden');
+      return;
+    }
+
+    const category = product.querySelector('.gifts__products-name p').textContent.toLowerCase();
+    
+    if (currentButtonValue.toLowerCase() !== category) {
+      product.classList.add('hidden');
+    } else {
+      product.classList.remove('hidden');
     }
   });
-});
+}
+
+const buttons = document.querySelector('.main__gifts-sort');
+buttons.addEventListener('click', handleSortButtonClick);
+
 
 /* finish sort product cards */
 
 /* start scroll button */
 
-(function(){
-  
+(function () {
   let flagHeight = false;
   let flagWidth = false;
-  
+
   document.addEventListener('DOMContentLoaded', () => {
     let startWidthWindow = window.innerWidth;
+
     if (startWidthWindow <= 768) {
       flagWidth = true;
     }
   });
-  
+
   const button = document.getElementById('scroller');
-  
+
   window.addEventListener('scroll', () => {
     if (window.scrollY >= 300) {
       flagHeight = true;
@@ -136,7 +151,7 @@ buttons.addEventListener('click', (event) => {
       button.style.display = 'none';
     }
   });
-  
+
   window.addEventListener('resize', () => {
     let width = window.innerWidth;
     if (width <= 768) {
@@ -150,14 +165,13 @@ buttons.addEventListener('click', (event) => {
       button.style.display = 'none';
     }
   });
-  
+
   button.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   });
-})()
-
+})();
 
 /* finish scroll button */

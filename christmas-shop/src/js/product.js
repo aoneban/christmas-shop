@@ -103,6 +103,13 @@ export class ProductCard {
 
     modal.querySelector('.close').addEventListener('click', this.closeModal);
 
+    window.addEventListener('resize', () => {
+      const modal = document.getElementById('myModal');
+      if (modal) {
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
     window.addEventListener('click', (event) => {
       if (event.target === modal) {
         this.closeModal();
@@ -117,4 +124,5 @@ export class ProductCard {
     document.body.style.overflow = 'visible';
     document.body.removeChild(modal);
   }
+
 }

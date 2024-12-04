@@ -84,11 +84,11 @@ generateProducts();
 
 function handleSortButtonClick(event) {
   deactivateOldButtons();
-  
+
   const currentButton = event.target;
   const currentButtonValue = currentButton.textContent;
   currentButton.classList.add('active');
-  
+
   filterProducts(currentButtonValue);
 }
 
@@ -99,16 +99,17 @@ function deactivateOldButtons() {
 
 function filterProducts(currentButtonValue) {
   const products = document.querySelectorAll('.gifts__products-wrapper');
-  
+
   products.forEach((product) => {
-    
     if (currentButtonValue === 'All') {
       product.classList.remove('hidden');
       return;
     }
 
-    const category = product.querySelector('.gifts__products-name p').textContent.toLowerCase();
-    
+    const category = product
+      .querySelector('.gifts__products-name p')
+      .textContent.toLowerCase();
+
     if (currentButtonValue.toLowerCase() !== category) {
       product.classList.add('hidden');
     } else {
@@ -119,7 +120,6 @@ function filterProducts(currentButtonValue) {
 
 const buttons = document.querySelector('.main__gifts-sort');
 buttons.addEventListener('click', handleSortButtonClick);
-
 
 /* finish sort product cards */
 

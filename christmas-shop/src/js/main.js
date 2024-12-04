@@ -49,7 +49,7 @@ function launchBurgerMenu() {
   const content = document.querySelector('.overlay-content');
   const modal = document.getElementById('myModal');
   const myNav = document.getElementById('myNav');
-  const body = document.body
+  const body = document.body;
 
   burger.addEventListener(
     'click',
@@ -96,9 +96,7 @@ launchBurgerMenu();
 /* start random gallery */
 
 function showRandomProductCards() {
-
   const getRandomNumber = () => {
-
     let totalCardsWeNeed = 4;
     let totalCardsInArray = 36;
     const arrayRandomNumbers = [];
@@ -153,10 +151,9 @@ showRandomProductCards();
   let steps = 0;
   let totalSteps = 3;
   let spacing = 0;
-  const paddings = 2
+  const paddings = 2;
 
   function updateSpacing() {
-    
     count = 0;
     steps = 0;
     spacing = 0;
@@ -220,3 +217,4 @@ showRandomProductCards();
 })();
 
 /* finish slider */
+

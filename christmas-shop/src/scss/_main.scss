@@ -387,7 +387,7 @@ button:disabled:hover {
       text-align: center;
     }
     &-button {
-      @include btn_base;
+      @include  btn_base;
       font-family: 'Montserrat', sans-serif;
       display: block;
       justify-content: center;

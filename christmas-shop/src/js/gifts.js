@@ -15,6 +15,8 @@ function launchBurgerMenu() {
   const modal = document.getElementById('myModal');
   const myNav = document.getElementById('myNav');
   const body = document.body;
+  const tabletSize = 768;
+
 
   burger.addEventListener(
     'click',
@@ -23,24 +25,24 @@ function launchBurgerMenu() {
 
       return function () {
         window.addEventListener('resize', () => {
-          if (window.innerWidth > 768) {
-            close();
+          if (window.innerWidth > tabletSize) {
+            closeBurgerPanel();
           }
         });
         content.addEventListener('click', (event) => {
           if (event.target) {
-            close();
+            closeBurgerPanel();
           }
         });
 
-        function open() {
+        function openBurgerPanel() {
           burger.classList.add('change');
           myNav.style.width = '100%';
           body.style.overflow = 'hidden';
           flag = true;
         }
 
-        function close() {
+        function closeBurgerPanel() {
           burger.classList.remove('change');
           myNav.style.width = '0';
           if (!modal) {
@@ -49,7 +51,7 @@ function launchBurgerMenu() {
           flag = false;
         }
 
-        return !flag ? open() : close();
+        return !flag ? openBurgerPanel() : closeBurgerPanel();
       };
     })()
   );
@@ -126,45 +128,49 @@ buttons.addEventListener('click', handleSortButtonClick);
 /* start scroll button */
 
 (function () {
-  let flagHeight = false;
-  let flagWidth = false;
+  const button = document.getElementById('scroller');
+  const tabletSize = 768;
+  const startShowButton = 300;
+  let flagForHeight = false;
+  let flagForWidth = false;
 
   document.addEventListener('DOMContentLoaded', () => {
     let startWidthWindow = window.innerWidth;
 
-    if (startWidthWindow <= 768) {
-      flagWidth = true;
+    if (startWidthWindow <= tabletSize) {
+      flagForWidth = true;
     }
   });
 
-  const button = document.getElementById('scroller');
-
   window.addEventListener('scroll', () => {
-    if (window.scrollY >= 300) {
-      flagHeight = true;
+    if (window.scrollY >= startShowButton) {
+      flagForHeight = true;
     } else {
-      flagHeight = false;
+      flagForHeight = false;
     }
-    if (flagHeight && flagWidth) {
-      button.style.display = 'block';
-    } else {
-      button.style.display = 'none';
-    }
+
+    checkConditionsToShow();
   });
 
   window.addEventListener('resize', () => {
-    let width = window.innerWidth;
-    if (width <= 768) {
-      flagWidth = true;
-    } else if (width >= 769) {
-      flagWidth = false;
+    let widthToShowButton = window.innerWidth;
+
+    if (widthToShowButton <= tabletSize) {
+      flagForWidth = true;
+    } else if (widthToShowButton > tabletSize) {
+      flagForWidth = false;
     }
-    if (flagHeight && flagWidth) {
+
+    checkConditionsToShow();
+  });
+
+  function checkConditionsToShow() {
+    if (flagForHeight && flagForWidth) {
       button.style.display = 'block';
     } else {
       button.style.display = 'none';
     }
-  });
+  }
 
   button.addEventListener('click', () => {
     window.scrollTo({

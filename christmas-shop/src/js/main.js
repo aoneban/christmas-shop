@@ -10,24 +10,22 @@ document.addEventListener('DOMContentLoaded', function () {
   let timerId = null;
 
   function countdownTimer() {
-    const diff = deadline - new Date();
-    if (diff <= 0) {
+    const difference = deadline - new Date();
+    if (difference <= 0) {
       clearInterval(timerId);
     }
-    const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-    const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-    const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-    const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+    const days =
+      difference > 0 ? Math.floor(difference / 1000 / 60 / 60 / 24) : 0;
+    const hours =
+      difference > 0 ? Math.floor(difference / 1000 / 60 / 60) % 24 : 0;
+    const minutes =
+      difference > 0 ? Math.floor(difference / 1000 / 60) % 60 : 0;
+    const seconds = difference > 0 ? Math.floor(difference / 1000) % 60 : 0;
 
-    $days.textContent = days < 10 ? days : days;
-    $hours.textContent = hours < 10 ? hours : hours;
-    $minutes.textContent = minutes < 10 ? minutes : minutes;
-    $seconds.textContent = seconds < 10 ? seconds : seconds;
-
-    $days.dataset.title = 'days';
-    $hours.dataset.title = 'hours';
-    $minutes.dataset.title = 'minutes';
-    $seconds.dataset.title = 'seconds';
+    $days.textContent = days;
+    $hours.textContent = hours;
+    $minutes.textContent = minutes;
+    $seconds.textContent = seconds;
   }
 
   const $days = document.querySelector('.timer__days');
@@ -50,6 +48,7 @@ function launchBurgerMenu() {
   const modal = document.getElementById('myModal');
   const myNav = document.getElementById('myNav');
   const body = document.body;
+  const TABLET_SIZE = 768;
 
   burger.addEventListener(
     'click',
@@ -57,25 +56,28 @@ function launchBurgerMenu() {
       let flag = false;
 
       return function () {
-        window.addEventListener('resize', () => {
-          if (window.innerWidth > 768) {
-            close();
-          }
-        });
+        window.addEventListener('resize', checkTabletSize);
+
         content.addEventListener('click', (event) => {
           if (event.target) {
-            close();
+            closeBurgerPanel();
           }
         });
 
-        function open() {
+        function checkTabletSize() {
+          if (window.innerWidth > TABLET_SIZE) {
+            closeBurgerPanel();
+          }
+        }
+
+        function openBurgerPanel() {
           burger.classList.add('change');
           myNav.style.width = '100%';
           body.style.overflow = 'hidden';
           flag = true;
         }
 
-        function close() {
+        function closeBurgerPanel() {
           burger.classList.remove('change');
           myNav.style.width = '0';
           if (!modal) {
@@ -84,7 +86,7 @@ function launchBurgerMenu() {
           flag = false;
         }
 
-        return !flag ? open() : close();
+        return !flag ? openBurgerPanel() : closeBurgerPanel();
       };
     })()
   );
@@ -217,4 +219,3 @@ showRandomProductCards();
 })();
 
 /* finish slider */
-

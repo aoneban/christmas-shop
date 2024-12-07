@@ -15,8 +15,7 @@ function launchBurgerMenu() {
   const modal = document.getElementById('myModal');
   const myNav = document.getElementById('myNav');
   const body = document.body;
-  const tabletSize = 768;
-
+  const TABLET_SIZE = 768;
 
   burger.addEventListener(
     'click',
@@ -24,16 +23,17 @@ function launchBurgerMenu() {
       let flag = false;
 
       return function () {
-        window.addEventListener('resize', () => {
-          if (window.innerWidth > tabletSize) {
-            closeBurgerPanel();
-          }
-        });
+        window.addEventListener('resize', checkTabletSize);
+
         content.addEventListener('click', (event) => {
           if (event.target) {
             closeBurgerPanel();
           }
         });
+
+        function checkTabletSize() {
+          window.innerWidth > TABLET_SIZE ? closeBurgerPanel() : null;
+        }
 
         function openBurgerPanel() {
           burger.classList.add('change');

@@ -65,9 +65,7 @@ function launchBurgerMenu() {
         });
 
         function checkTabletSize() {
-          if (window.innerWidth > TABLET_SIZE) {
-            closeBurgerPanel();
-          }
+          window.innerWidth > TABLET_SIZE ? closeBurgerPanel() : null;
         }
 
         function openBurgerPanel() {
